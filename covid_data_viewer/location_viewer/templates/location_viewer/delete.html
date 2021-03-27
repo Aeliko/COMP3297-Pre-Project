@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>COVID-19 Data Tracker</title>
+
+    </head>
+
+    <body>
+        <a href={% url 'index' %}>
+            <h1><span style='color:green'>COVID-19 Data Tracker</span></h1>
+        </a>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <p><b>Do you want to delete {{location}}?</b></p>
+            <input type='submit' name='Delete' value='Delete'>
+        </form>
+
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>COVID-19 Data Tracker</title>
+    </head>
+
+    <body>
+        <a href={% url 'index' %}>
+            <h1><span style='color:green'>COVID-19 Data Tracker</span></h1>
+        </a>
+
+        {% if location %}
+        <h2>{{location}}</h2>
+        {% endif %}
+
+        {% if data.error %}
+        <p>{{ data.error }}</p>
+
+        {% elif data %}
+        <ul>
+            <li>Date: {{data.date}}</li>
+            <li>Total number of confirmed cases: {{data.totalConfirmedCases}}</li>
+            <li>Total number of confirmed cases per million of population: {{data.totalConfirmedCasesPerMillion}}</li>
+            <li>Total number of fatalities: {{data.totalFatalities}}</li>
+            <li>Total number of fatalities per million of population: {{data.totalFatalitiesPerMillion}}</li>
+            <li>Number of new cases on {{data.date}}: {{data.numNewCases}}</li>
+            <li>7-day average number of new cases: {{data.sevenDayAverageNumNewCases}}</li>
+            <li>Number of new fatalities on {{data.date}}: {{data.numNewFatalities}}</li>
+            <li>7-day average number of new fatalities: {{data.sevenDayAverageNumNewFatalities}}</li>
+        </ul>
+        <a href={% url 'add' location_id %}><button>Edit Location Data</button></a>
+        {% else %}
+        <p>No data are available.</p>
+        {% endif %}
+
+        <a href={% url 'add' %}><button>Add Location Data</button></a>
+        <div>
+            {% if location_list %}
+            <form action='' method='POST'>
+                {% csrf_token %}
+                {{ location_list }}
+                <button type='submit'>Display</button>
+            </form>
+            {% endif %}
+    </body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>COVID-19 Data Tracker</title>
+    </head>
+
+    <body>
+        <a href={% url 'index' %}>
+            <h1><span style='color:green'>COVID-19 Data Tracker</span></h1>
+        </a>
+
+        <form action='' method='POST'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type='submit'>Save</button>
+        </form>
+        {% if location_id %}
+        <a href={% url 'delete' location_id %}><button>Delete Location Data</button></a>
+        {% endif %}
+    </body>
+
+</html>
