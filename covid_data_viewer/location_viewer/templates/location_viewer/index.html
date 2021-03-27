@@ -30,9 +30,12 @@
             <li>Number of new fatalities on {{data.date}}: {{data.numNewFatalities}}</li>
             <li>7-day average number of new fatalities: {{data.sevenDayAverageNumNewFatalities}}</li>
         </ul>
-        <a href={% url 'add' location_id %}><button>Edit Location Data</button></a>
         {% else %}
         <p>No data are available.</p>
+        {% endif %}
+
+        {% if location_id %}
+        <a href={% url 'add' location_id %}><button>Edit Location Data</button></a>
         {% endif %}
 
         <a href={% url 'add' %}><button>Add Location Data</button></a>

@@ -44,7 +44,8 @@ def detail(request, location_id):
     except ObjectDoesNotExist:
         context = {
             'data': {
-                'error': 'No Locations in database, please add a new Location.'
+                'error':
+                'Location does not exist in database, please add a new Location.'
             }
         }
     return render(request, 'location_viewer/index.html', context)
